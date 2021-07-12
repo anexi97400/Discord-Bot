@@ -5,8 +5,7 @@ module.exports = {
     category: "owner",
     usage: "eval <code>",
     run: async(client, message, args) => {
-
-        let result = eval(args.join(" "))
-        message.channel.send(result)
+        
+        message.channel.send(eval(args.join(" ")))
     }
 }
