@@ -3,7 +3,6 @@ const { addexp } = require("../handlers/xp.js");
 const { default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
-const ownerID = process.env.OWNERID
 module.exports.run = async (client, message) => {
   if (message.author.bot || !message.guild) return;
   addexp(message); //Add XP to the user profile
@@ -49,7 +48,7 @@ if(!message.member.hasPermission("ADMINISTRATOR")) {
 
   /* O W N E R */
   if (command.ownerOnly) {
-    if (message.author.id !== ownerID) return message.channel.send("This command can only be use by owner :C")
+    if (message.author.id !== process.env.OWNERID) return message.channel.send("This command can only be use by owner :C")
   }
 
   /* C O O L - D O W N */
