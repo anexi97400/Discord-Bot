@@ -11,7 +11,7 @@ module.exports = {
 
 const inviteEmbed = new Discord.MessageEmbed()
 .setTitle('Invite links')
-.setDescription('[Invite link (recommended)](https://bit.ly/kiyoshii-r)\n[Invite link (admin)](https://https://bit.ly/kiyoshii-admin)');	
+.setDescription('[Invite link (recommended)](https://bit.ly/kiyoshii-r)\n[Invite link (admin)](https://bit.ly/kiyoshii-admin)');	
 	
 let button = new MessageButton()
   .setStyle('url')
@@ -20,7 +20,7 @@ let button = new MessageButton()
 
 let button2 = new MessageButton()
   .setStyle('url')
-  .setURL('https://https://bit.ly/kiyoshii-admin') 
+  .setURL('https://bit.ly/kiyoshii-admin') 
   .setLabel('Admin')
   
 
