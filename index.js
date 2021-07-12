@@ -4,6 +4,7 @@ const client = new Discord.Client({
 });
 require('discord-buttons')(client);
 const { prefix } = require('./events/message')
+const mongooseURL = process.env.MONGOOSEURL
 
 const db = require('quick.db')
 const { GiveawaysManager } = require('discord-giveaways');

@@ -1,9 +1,9 @@
 const db = require("quick.db")
 const { addexp } = require("../handlers/xp.js");
-const { ownerID, default_prefix } = require("../config.json");
+const { default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
-
+const ownerID = process.env.OWNERID
 module.exports.run = async (client, message) => {
   if (message.author.bot || !message.guild) return;
   addexp(message); //Add XP to the user profile
