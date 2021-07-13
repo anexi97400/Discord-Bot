@@ -1,11 +1,8 @@
-const db = require("quick.db")
-const { addexp } = require("../handlers/xp.js");
+const db = require("quick.db");
 const { default_prefix } = require("../config.json");
 const { badwords } = require("../data.json") 
 let cooldown = {}
 module.exports.run = async (client, message) => {
-  if (message.author.bot || !message.guild) return;
-  addexp(message); //Add XP to the user profile
 
 /* LINK AND SWEAR WORDS CHECKER */
 if(!message.member.hasPermission("ADMINISTRATOR")) {
