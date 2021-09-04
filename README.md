@@ -17,6 +17,3 @@ description: "Nothing",
 }
 
 ```
-## INVITE MY BOT
-- [Recommended](https://bit.ly/yoshii-bot-r)<br>
-- [Admin](https://bit.ly/yoshii-bot-admin)
