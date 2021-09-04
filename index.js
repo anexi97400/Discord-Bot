@@ -88,7 +88,7 @@ client.giveawaysManager.on("giveawayReactionRemoved", (giveaway, member, reactio
 
 
 
-// Listen on port 8080 //
+// Listen on host 8080 //
 const http = require('http');
 
 const hostname = '127.0.0.1';
