@@ -9,12 +9,12 @@ module.exports = {
         aliases: [],
         category: "moderation",
         usage: "gstart <channel_mention> <giveaway_time> <number of winners> <prize>",
-        
+
     run: async (client, message, args) => {
 
         
         
-const yay = client.emojis.cache.get("860567933552820234");
+const yay = client.emojis.cache.get("885978472537808898");
 
 
           // If the member doesn't have enough permissions

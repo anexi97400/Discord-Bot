@@ -4,7 +4,7 @@ const { badwords } = require("../data.json")
 let cooldown = {}
 module.exports.run = async (client, message) => {
 
-/* LINK AND SWEAR WORDS CHECKER */
+/* SWEAR WORDS CHECKER */
 if(!message.member.hasPermission("ADMINISTRATOR")) {
 if(is_swear(message.content)) {
     return message.channel.send("You are not allowed to use swear words in server.")
