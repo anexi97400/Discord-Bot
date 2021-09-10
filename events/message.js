@@ -6,9 +6,7 @@ module.exports.run = async (client, message) => {
 
 /* LINK AND SWEAR WORDS CHECKER */
 if(!message.member.hasPermission("ADMINISTRATOR")) {
-  if(is_url(message.content)) {
-    return message.channel.send("You are not allowed to send links here.")
-  } else if(is_swear(message.content)) {
+if(is_swear(message.content)) {
     return message.channel.send("You are not allowed to use swear words in server.")
   }
 }

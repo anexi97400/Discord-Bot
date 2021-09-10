@@ -3,13 +3,11 @@ const client = new Discord.Client({
   disableEveryone: true 
 });
 require('discord-buttons')(client);
+
 const { prefix } = require('./events/message')
-const mongooseURL = process.env.MONGOOSEURL
 
 const db = require('quick.db')
 const { GiveawaysManager } = require('discord-giveaways');
-const disbut = require('discord-buttons');
-const { MessageButton, MessageActionRow } = require('discord-buttons');
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
