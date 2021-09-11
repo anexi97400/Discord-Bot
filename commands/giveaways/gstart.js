@@ -14,11 +14,7 @@ module.exports = {
 
         
         
-const yay = client.emojis.cache.get("885978472537808898");
-
-
-          // If the member doesn't have enough permissions
-    
+const yay = client.emojis.cache.get("885978385514385429");
 
     // Giveaway channel
     let giveawayChannel = message.mentions.channels.first();
