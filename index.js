@@ -1,23 +1,21 @@
-const Discord = require("discord.js"); 
-const client = new Discord.Client({
-  disableEveryone: true 
-});
+const { Client, Collection } = require("discord.js"); 
+const client = new Client({ disableEveryone: true });
 require('discord-buttons')(client);
 
-const { prefix } = require('./events/message')
+const { prefix } = require('./events/message');
 
-const db = require('quick.db')
+const db = require('quick.db');
 const { GiveawaysManager } = require('discord-giveaways');
 
-client.commands = new Discord.Collection();
-client.aliases = new Discord.Collection();
+client.commands = new Collection();
+client.aliases = new Collection();
 
-["command", "events"].forEach(handler => {
-  require(`./handlers/${handler}`)(client);
+['command', 'events'].forEach(handler => {
+  require('./handlers/' + handler)(client);
 });
 
 //GIVEAWAY//
-if(!db.get("giveaways")) db.set("giveaways", []);
+if (!db.get("giveaways")) db.set("giveaways", []);
 
 const GiveawayManagerWithOwnDatabase = class extends GiveawaysManager {
 
@@ -97,5 +95,5 @@ const server = http.createServer((req, res) => {
   res.end('Hello World');
 });
 
-server.listen(8080)
+server.listen(8080);
 client.login(process.env.TOKEN);
