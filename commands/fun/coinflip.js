@@ -1,14 +1,15 @@
-const { MessageEmbed } = require("discord.js");
 module.exports = {
-    name: "coinflip",
-    description: "flips a coin!",
-    category: "fun",
+    name: 'coinflip',
+    description: 'flips a coin!',
+    category: 'fun',
     run: async(client, message, args) => {
-        const choices= ["heads", "tails"];
-        const choice = choices[Math.floor(Math.random() * choices.length)];
-        let embed = new MessageEmbed()
-        .setTitle("Coinflip!")
-        .setDescription(`You flipped a **${choice}**!`)
-        message.channel.send(embed)
+        const choices= ['heads', 'tails'];
+
+        message.channel.send({
+            embed: {
+                title: 'Coinflip!',
+                description: 'You flipped a **' + choices[Math.floor(Math.random() * choices.length)] + '**!'
+            }
+        });
     }
-}
+};
