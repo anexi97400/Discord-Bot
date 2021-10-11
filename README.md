@@ -6,14 +6,14 @@ The only Discord Bot you need :)
 ```js
 
 module.exports = {
-name: "ping",
-usage: "Nothing rlly",
-ownerOnly: false, 
-cooldown: 5000,
-botPermission: [],
-authorPermission: [],
-aliases: [],
-description: "Nothing",
-}
+  name: 'ping',
+  usage: 'Nothing rlly',
+  ownerOnly: false, 
+  cooldown: 5000,
+  botPermission: [],
+  authorPermission: [],
+  aliases: [],
+  description: 'Nothing',
+};
 
 ```
