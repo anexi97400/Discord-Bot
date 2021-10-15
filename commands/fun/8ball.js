@@ -1,10 +1,10 @@
-const answersList = require('../../config.json')
+const answers = require('../../config.json');
 
 module.exports = {
     name: '8ball',
     description: 'Ask something to the magic 8ball.',
     category: 'fun',
-    run: async(client, message, args) => {
+    run: async (client, message, args) => {
 	if (!args.length) return message.channel.send('You need to ask the magic 8ball something, dude.');
 
 	message.channel.send({
@@ -14,4 +14,4 @@ module.exports = {
 		}
 	});
     }
-}
+};

@@ -6,7 +6,7 @@ module.exports = {
   description: 'Get Fresh Joke :D',
   run: async (client, message, args) => {
     const data = await Random.getJoke();
-    
+
     message.channel.send(data);
   }
 };

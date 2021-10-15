@@ -1,4 +1,4 @@
-const { Random } = require('something-random-on-discord')
+const { Random } = require('something-random-on-discord');
 
 module.exports = {
   name: 'advice',
@@ -6,8 +6,8 @@ module.exports = {
   description: 'Get Fresh Advice :D',
   run: async (client, message, args) => {
 
-    const data = await Random.getAdvice()
-    message.channel.send(data)
+    const data = await Random.getAdvice();
+    message.channel.send(data);
 
   }
 };

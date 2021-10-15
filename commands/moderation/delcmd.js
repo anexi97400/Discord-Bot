@@ -1,40 +1,38 @@
-const db = require("quick.db")
+const db = require('quick.db');
 
 module.exports = {
-  name: "delcmd",
-  usage: "delcmd <cmd_name>",
-  description: "Delete the custom command",
-  category: "moderation",
+  name: 'delcmd',
+  usage: 'delcmd <cmd_name>',
+  description: 'Delete the custom command',
+  category: 'moderation',
   run: (client, message, args) => {
 
-    let cmdname = args[0]
+    const cmdname = args[0];
 
-    if(!cmdname) return message.channel.send(":x: Gimm me commmand name, `delcmd <cmd_name>`")
+    if(!cmdname) return message.channel.send(':x: Gimm me commmand name, `delcmd <cmd_name>`');
 
-    let database = db.get(`cmd_${message.guild.id}`)
+    const database = db.get(`cmd_${message.guild.id}`);
 
     if(database) {
-      let data = database.find(x => x.name === cmdname.toLowerCase())
+      const data = database.find(x => x.name === cmdname.toLowerCase());
 
-      if(!data) return message.channel.send(":x: Unable to find this command.")
+      if(!data) return message.channel.send(':x: Unable to find this command.');
 
-      let value = database.indexOf(data)
-      delete database[value]
+      const value = database.indexOf(data);
+      delete database[value];
 
-      var filter = database.filter(x => {
-        return x != null && x != ''
-      })
+      const filter = database.filter(x => {
+        return x != null && x != '';
+      });
 
-      db.set(`cmd_${message.guild.id}`, filter)
-      return message.channel.send(`Deleted the **${cmdname}** Command!`)
+      db.set(`cmd_${message.guild.id}`, filter);
+      return message.channel.send(`Deleted the **${cmdname}** Command!`);
 
 
     } else {
-      return message.channel.send(":x: Sorry but i am unable to find that command!")
-    
+      return message.channel.send(':x: Sorry but i am unable to find that command!');
 
 
   }
   }
-}
- 
+};
