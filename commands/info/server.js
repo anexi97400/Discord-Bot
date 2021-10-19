@@ -2,10 +2,10 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'server',
 	description: 'Server informations',
-	category: 'info',
-	usage: 'server',
-	run: async (client, message, args) => {
-
+	category: "info",
+	usage: "server",
+	run: async(client, message, args) => {
+    
     const serverEmbed = new Discord.MessageEmbed()
 
 	.setTitle('Informations about the server')
@@ -14,4 +14,4 @@ module.exports = {
 		message.channel.send(serverEmbed);
 	},
 
-};
+}

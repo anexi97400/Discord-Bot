@@ -1,42 +1,39 @@
-const { Collection } = require('discord.js');
-const { GreenBot } = require('./base/DiscordBot');
-const fs = require('fs');
-
-const client = new GreenBot({
-    fetchAllMembers: !0,
-    autoReconnect: !0,
-    messageCacheMaxSize: 20,
-    partials: ['MESSAGE', 'CHANNEL', 'GUILD_MEMBER', 'REACTION', 'GUILD_VOICE_STATES'],
-    intents: [
-        'GUILD_MEMBERS',
-        'GUILDS',
-        'GUILD_VOICE_STATES',
-        'GUILD_MESSAGES',
-        'GUILD_MESSAGE_REACTIONS',
-        'GUILD_BANS',
-        'GUILD_INVITES',
-        'GUILD_VOICE_STATES',
-        'DIRECT_MESSAGES',
-        'GUILD_INTEGRATIONS',
-        'GUILD_WEBHOOKS',
-        'GUILD_MESSAGE_TYPING',
-        'DIRECT_MESSAGES',
-        'DIRECT_MESSAGE_REACTIONS',
-        'DIRECT_MESSAGE_TYPING',
-        'GUILD_MESSAGE_REACTIONS',
-    ],
-    allowedMentions: {
-        parse: ['users', 'roles']
-    },
+const { Client, Message, MessageEmbed, Collection } = require("discord.js");
+const colors = require("colors");
+const fs = require("fs");
+const client = new Client({
+  messageCacheLifetime: 60,
+  fetchAllMembers: false,
+  messageCacheMaxSize: 10,
+  restTimeOffset: 0,
+  restWsBridgetimeout: 100,
+  shards: "auto",
+  allowedMentions: {
+    parse: ["roles", "users", "everyone"],
+    repliedUser: true,
+  },
+  partials: ["MESSAGE", "CHANNEL", "REACTION"],
+  intents: 32767,
 });
 module.exports = client;
 
+const config = require("./config/config.json");
+const embed = require("./config/embed.json");
+
+const prefix = config.prefix;
+const token = config.token;
 // Global Variables
 client.commands = new Collection();
+client.aliases = new Collection();
+client.events = new Collection();
+client.cooldowns = new Collection();
 client.slashCommands = new Collection();
-client.config = require('./config.json');
+client.categories = fs.readdirSync("./commands/");
 
 // Initializing the project
-require('./base')(client);
+//Loading files, with the client variable like Command Handler, Event Handler, ...
+["command", "event"].forEach((handler) => {
+  require(`./handler/${handler}`)(client);
+});
 
-client.login(client.config.token);
+client.login(token); 

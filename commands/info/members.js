@@ -2,8 +2,8 @@ const Discord = require('discord.js');
 module.exports = {
 	name: 'members',
 	description: 'Show the number of members',
-	category: 'info',
-	run: async (client, message, args) => {
+	category: "info",
+	run: async(client, message, args) => {
 
 	const membersEmbed = new Discord.MessageEmbed()
 
@@ -13,4 +13,5 @@ module.exports = {
 		message.channel.send(membersEmbed);
 	},
 };
+
 

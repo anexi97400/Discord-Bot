@@ -1,4 +1,4 @@
-const translate = require('@iamtraction/google-translate');
+const translate = require('@iamtraction/google-translate')
 
 module.exports = {
     name: 'translate',
@@ -10,12 +10,12 @@ module.exports = {
    * @param {Message} message
    * @param {String[]} args
    */
-    run: async (client, message, args) => {
+    run: async(client, message, args) => {
 
     if (!args.length) return message.reply('Please specify a text to translate');
 
     const translated = await translate(args.join(' '), { to : 'en' });
-    message.channel.send(translated.text);
-
-    }
+    message.channel.send(translated.text)
+        
+    } 
 };

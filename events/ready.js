@@ -1,16 +1,51 @@
-module.exports.run = async(client, message) => {
+const client = require("../index");
+const mongoose = require("mongoose");
+const chalk = require("chalk");
+const { mongoUrl } = require("../config/config.json"); 
 
-  const activities_list = [
-    `.invite`,
-    `Serving on ${client.guilds.cache.size} servers`,
-    `.help`
-      ]; 
-
-  console.log(`${client.user.tag} est connecté pour servir dans ${client.channels.cache.size} canaux sur ${client.guilds.cache.size} serveurs, pour un total de ${client.users.cache.size} personnes.`)
-  setInterval(() => {
-      const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
-      client.user.setActivity(activities_list[index], { type: 'WATCHING' }); // sets bot's activities to one of the phrases in the arraylist.
-  }, 10000); // Runs this every 10 seconds.
-
-
-};
+client.on("ready", () => {
+   
+  
+/// connecting mongo db
+    mongoose
+    .connect(mongoUrl, {
+        useUnifiedTopology : true,
+        useNewUrlParser : true,
+    }).then(
+        console.log(
+          chalk.bgGreenBright.black(
+            ` ${client.user.username} connected to Mongo DB `
+          )
+        )
+      )
+      .catch((err) =>
+        console.log(
+          chalk.bgRedBright.black(
+            ` ${client.user.username} could not connect to mongo DB `
+          )
+        )
+      );
+      let allMembers = new Set();
+      client.guilds.cache.forEach((guild) => {
+        guild.members.cache.forEach((member) => {
+          allMembers.add(member.user.id);
+        });
+      });
+    
+      let allChannels = new Set();
+      client.guilds.cache.forEach((guild) => {
+        guild.channels.cache.forEach((channel) => {
+          allChannels.add(channel.id);
+        });
+      });
+    
+      console.log(
+        chalk.bgMagentaBright.black(` ${client.guilds.cache.size} servers `),
+        chalk.bgMagentaBright.black(` ${client.channels.cache.size} channels `),
+        chalk.bgMagentaBright.black(` ${allMembers.size} members `)
+      );
+      
+/// loading bot
+console.log(`${client.user.tag} is Online!`.bgRed)
+client.user.setActivity(`Under Developement!`)
+});

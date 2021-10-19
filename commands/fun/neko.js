@@ -1,5 +1,5 @@
 const { Random } = require('something-random-on-discord');
-
+ 
 module.exports = {
   name: 'neko',
   category: 'fun',
