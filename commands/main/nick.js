@@ -1,9 +1,10 @@
-const { Client, Message, MessageEmbed } = require("discord.js");
+/* eslint-disable no-shadow-restricted-names */
+const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
-  name: "nick",
-  category: "main",
-  usage: "nick <member_mention> <nickname>",
+  name: 'nick',
+  category: 'main',
+  usage: 'nick <member_mention> <nickname>',
   /**
    * @param {Client} client
    * @param {Message} message
@@ -12,18 +13,18 @@ module.exports = {
   run: async (client, message, args) => {
     const member = message.mentions.members.first();
 
-    if (!member) return message.reply("Please specify a member!");
+    if (!member) return message.reply('Please specify a member!');
 
-    const arguments = args.slice(1).join(" ");
+    const arguments = args.slice(1).join(' ');
 
-    if (!arguments) return message.reply("Please specify a nickname!");
+    if (!arguments) return message.reply('Please specify a nickname!');
 
     try {
       member.setNickname(arguments);
     } catch (err) {
       console.log(err);
       message.reply(
-        "I do not have permission to set " + member.toString() + " nickname!"
+        'I do not have permission to set ' + member.toString() + ' nickname!'
       );
     }
   },

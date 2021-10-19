@@ -1,15 +1,38 @@
-const discord = require('discord.js')
+const { Client, Message, MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'ping',
-    aliases: ["latency"],
-    description: "Returns the bot's ping!",
-    usage: "ping",
-    category: "info",
-    run: async(client, message) => {
-        const embed = new discord.MessageEmbed()
-        .setTitle("Bot's ping")
-        .setDescription(`Ping - ${client.ws.ping}`)
-        message.channel.send(embed)
+    aliases: ['pi', 'ms'],
+    categories: 'info',
+    userperm: [],
+    botperm: [],
+    ownerOnly: false,
+    description: 'Show Bot Ping',
+    cooldown: 5,
+    usage: '',
+    /**
+     * @param {Client} client
+     * @param {Message} message
+     * @param {String[]} args
+     */
+    run: async (client, message, args) => {
+
+
+      const circles = {
+        green: '✔️',
+        yellow: '🟠',
+        red: '❌'
+    };
+
+    const pingEmbed = new MessageEmbed()
+
+        .setDescription(
+            `${client.ws.ping <= 200 ? circles.green : client.ws.ping <= 400 ? circles.yellow : circles.red} ${client.ws.ping}ms`
+        );
+        message.reply({ embeds : [pingEmbed],
+        allowedMentions: {
+            repliedUser: false
+        } });
+
     }
-}
+};

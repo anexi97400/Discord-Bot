@@ -2,8 +2,8 @@ module.exports = {
     name: 'coinflip',
     description: 'flips a coin!',
     category: 'fun',
-    run: async(client, message, args) => {
-        const choices= ['heads', 'tails'];
+    run: async (client, message, args) => {
+        const choices = ['heads', 'tails'];
 
         message.channel.send({
             embed: {

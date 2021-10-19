@@ -1,42 +1,40 @@
-const Discord = require("discord.js");
+const Discord = require('discord.js');
 
 module.exports = {
-  name: "ban",
-  category: "moderation",
-  description: "Ban anyone with one shot whithout knowing anyone xD",
-  usage: "ban <@user> <reason>",
+  name: 'ban',
+  category: 'moderation',
+  description: 'Ban anyone with one shot whithout knowing anyone xD',
+  usage: 'ban <@user> <reason>',
   cooldown: 50000,
-  botPermission: ["BAN_MEMBERS"],
-  authorPermission: ["BAN_MEMBERS"],
+  botPermission: ['BAN_MEMBERS'],
+  authorPermission: ['BAN_MEMBERS'],
   run: async (client, message, args) => {
-    
+
     const target = message.mentions.members.first();
-    
+
     if(!target) {
-      return message.channel.send(`**${message.author.username}**, Please mention the person who you want to ban.`)
+      return message.channel.send(`**${message.author.username}**, Please mention the person who you want to ban.`);
     }
-    
+
     if(target.id === message.author.id) {
-      return message.channel.send(`**${message.author.username}**, You can not ban yourself!`)
+      return message.channel.send(`**${message.author.username}**, You can not ban yourself!`);
     }
-    
-   
-    
+
+
    if(!args[1]) {
-     return message.channel.send(`**${message.author.username}**, Please Give Reason To ban Member`)
+     return message.channel.send(`**${message.author.username}**, Please Give Reason To ban Member`);
    }
-    
-    let embed = new Discord.MessageEmbed()
-    .setTitle("Action : Ban")
+
+    const embed = new Discord.MessageEmbed()
+    .setTitle('Action : Ban')
     .setDescription(`Banned ${target} (${target.id})`)
-    .setColor("#0099ff")
+    .setColor('#0099ff')
     .setThumbnail(target.avatarURL)
     .setFooter(`Banned by ${message.author.tag}`);
-    
-    message.channel.send(embed)
-    target.ban(args[1])
-    
-    
-    
+
+    message.channel.send(embed);
+    target.ban(args[1]);
+
+
   }
-}
+};

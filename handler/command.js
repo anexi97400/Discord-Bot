@@ -1,31 +1,31 @@
-const { Client } = require("discord.js");
-const { glob } = require("glob");
-const { promisify } = require("util");
+const { Client } = require('discord.js');
+const { glob } = require('glob');
+const { promisify } = require('util');
 const globPromise = promisify(glob);
-const { readdirSync } = require("fs");
-const ascii = require("ascii-table");
-let table = new ascii("Commands");
-table.setHeading("Command", "Load status");
+const { readdirSync } = require('fs');
+const ascii = require('ascii-table');
+const table = new ascii('Commands');
+table.setHeading('Command', 'Load status');
 
 /**
  * @param {Client} client
  */
-//loading commands in log
+// loading commands in log
 module.exports = async (client) => {
   try {
-    readdirSync("./commands/").forEach((dir) => {
+    readdirSync('./commands/').forEach((dir) => {
       const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
-        file.endsWith(".js")
+        file.endsWith('.js')
       );
-      for (let file of commands) {
-        let pull = require(`../commands/${dir}/${file}`);
+      for (const file of commands) {
+        const pull = require(`../commands/${dir}/${file}`);
         if (pull.name) {
           client.commands.set(pull.name, pull);
-          table.addRow(file, "✅");
+          table.addRow(file, 'Loaded!');
         } else {
           table.addRow(
             file,
-            `❌ error -> missing a help.name, or help.name is not a string.`
+            '❌ error -> missing a help.name, or help.name is not a string.'
           );
           continue;
         }
@@ -37,7 +37,7 @@ module.exports = async (client) => {
     console.log(String(e.stack).bgRed);
   }
 
- 
+
   // starting the slashcommands
   const slashCommands = await globPromise(
     `${process.cwd()}/SlashCommands/*/*.js`
@@ -50,12 +50,12 @@ slashCommands.map((value) => {
     client.slashCommands.set(file.name, file);
     arrayOfSlashCommands.push(file);
 });
-client.on("ready", async () => {
+client.on('ready', async () => {
     client.guilds.cache.forEach(async (g) => {
       await client.guilds.cache.get(g.id).commands.set(arrayOfSlashCommands);
     });
 
- 
+
 });
 
-}; 
+};

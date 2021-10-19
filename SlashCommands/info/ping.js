@@ -7,25 +7,25 @@ module.exports = {
     userperm: [],
     botperm: [],
 
-   
-    /** 
-     * @param {Client} client 
-     * @param {CommandInteraction} interaction 
-     * @param {String[]} args 
+
+    /**
+     * @param {Client} client
+     * @param {CommandInteraction} interaction
+     * @param {String[]} args
      */
-    run: async(client, interaction, args) => {
+    run: async (client, interaction, args) => {
       //  interaction.editReply({content : `Ping : ${client.ws.ping}`})
-      let circles = {
-        green: "<a:Online_Ping:878245782019522590",
-        yellow: "<a:yellowloading:865563744162283541>",
-        red: "<a:red:865563826123964416>"
-    }
+      const circles = {
+        green: '✔️',
+        yellow: '🟠',
+        red: '❌'
+    };
     const pingEmbed = new MessageEmbed()
-        
+
         .setDescription(
             `${client.ws.ping <= 200 ? circles.green : client.ws.ping <= 400 ? circles.yellow : circles.red} ${client.ws.ping}ms`
-        )
+        );
     interaction.followUp({ embeds: [pingEmbed] });
 
     }
-}
+};
