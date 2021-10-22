@@ -1,10 +1,6 @@
 {
-    "token": "",
-    "prefix": "",
-    "mongoUrl": "",
-    "owners": [
-        "OWNER ID: 1",
-       "OWNER ID: 2"]
-
-
+    "token": "ODk2MDY2MDIyMDUyODU1ODU5.YWBsgw.WnG4VdqGrtQaFr-sMPXtNgnfSSs",
+    "prefix": ".",
+    "mongoUrl": "mongodb+srv://Discord-Bot:YGSZSXzZ3wkDaV7Q@discordbot.xqkxx.mongodb.net/DiscordBot?retryWrites=true&w=majority",
+    "owner":"878434095422640189"
 }

@@ -12,23 +12,23 @@ table.setHeading('Event', 'Load Status');
 // loading events in log
 
 module.exports = (client) => {
-        const events = readdirSync('./events/').filter(file =>
-            file.endsWith('.js')
-        );
-        for (const file of events) {
-            try {
-                const pull = require(`../events/${file}`);
-                if (pull.event && typeof pull.event !== 'string') {
-                    table.addRow(file, '❌-> Property event should be a string!');
-                    continue;
-                }
-                pull.event = pull.event || file.replace('.js', '');
-                table.addRow(file, 'Loaded!');
-            } catch (err) {
-                console.log('');
-                console.log(err);
-                table.addRow(file, '❌-> This has an error!');
+    const events = readdirSync('./events/').filter(file =>
+        file.endsWith('.js')
+    );
+    for (const file of events) {
+        try {
+            const pull = require(`../events/${file}`);
+            if (pull.event && typeof pull.event !== 'string') {
+                table.addRow(file, '❌-> Property event should be a string!');
+                continue;
             }
+            pull.event = pull.event || file.replace('.js', '');
+            table.addRow(file, 'Loaded!');
+        } catch (err) {
+            console.log('');
+            console.log(err);
+            table.addRow(file, '❌-> This has an error!');
         }
-        console.log(table.toString().cyan);
-    };
+    }
+    console.log(table.toString().cyan);
+};

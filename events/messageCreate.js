@@ -23,7 +23,7 @@ client.on('messageCreate', async (message) => {
     if (matchedPrefix.includes(client.user.id)) {
       const mention = new MessageEmbed()
       .setDescription(`*To see all Commands* \ntype: \`${config.prefix}help\``)
-      .setFooter('© Neon');
+      .setFooter('© Slow');
       message.reply({
         embeds: [mention],
         allowedMentions: {
@@ -60,10 +60,10 @@ client.on('messageCreate', async (message) => {
     {return message.channel.send({ embeds: [botperm] });}
 
     // / owner only command handler
-    const { owners } = require('../config/config.json');
+    const { owner } = require('../config/config.json');
 if (command) {
  if (command.ownerOnly) {
-if (!owners.includes(message.author.id)) {
+if (!owner.includes(message.author.id)) {
 const ownerOnly = new MessageEmbed()
  .setDescription('*<a:wrong:885815677091454986> Only Bot Developer can use this command!*');
 return message.channel.send({ embeds: [ownerOnly] });

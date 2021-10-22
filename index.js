@@ -22,6 +22,7 @@ const embed = require('./config/embed.json');
 
 const prefix = config.prefix;
 const token = config.token;
+
 // Global Variables
 client.embedcolor = embed;
 client.commands = new Collection();
