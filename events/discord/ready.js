@@ -1,8 +1,8 @@
-const client = require('../index');
+const client = require('../../index');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 const { cyan } = require('chalk');
-const { mongoUrl } = require('../config/config.json');
+const { mongoUrl } = require('../../config/config.js');
 
 client.on('ready', () => {
 

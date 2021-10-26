@@ -9,6 +9,7 @@ const { Client, Message, MessageEmbed, Collection } = require('discord.js');
 
 module.exports.escapeRegex = escapeRegex;
 module.exports.onCoolDown = onCoolDown;
+module.exports.createClientVars = createClientVars;
 
 function escapeRegex(str) {
     try {
@@ -17,6 +18,26 @@ function escapeRegex(str) {
         console.log(String(e.stack).bgRed);
     }
 }
+
+/**
+ * Create the client variables
+ * @param {object} client The discord client instance
+ */
+ const createClientVars = async client => {
+  const config = require('../config/config');
+  client.color = config.color.startsWith('#') ? config.color : '#3A871F';
+  client.owner = config.ownerID,
+  client.footer = config.footer.slice(0, 32);
+  client.defaultPrefix = config.prefix.slice(0, 4);
+  client.defaultLanguage = config.defaultLanguage;
+  client.log = config.logAll;
+  client.devMode = {
+      enabled: config.devMode,
+      serverID: config.devServer
+  };
+  client.categories = config.categories;
+  client.links = config.links;
+};
 
 /**
  *
@@ -67,3 +88,4 @@ function escapeRegex(str) {
       return false;
     }
   }
+

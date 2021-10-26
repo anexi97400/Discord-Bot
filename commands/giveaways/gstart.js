@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const ms = require('ms');
-const config = require('../../config/config.json');
+const config = require('../../config/config.js');
 
 module.exports = {
         name: 'gstart',

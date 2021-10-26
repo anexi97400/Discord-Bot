@@ -1,6 +1,7 @@
 const { Client, Message, MessageEmbed, Collection } = require('discord.js');
 const colors = require('colors');
 const fs = require('fs');
+
 const client = new Client({
   messageCacheLifetime: 60,
   fetchAllMembers: false,
@@ -17,8 +18,8 @@ const client = new Client({
 });
 module.exports = client;
 
-const config = require('./config/config.json');
-const embed = require('./config/embed.json');
+const config = require('./config/config.js');
+const embed = require('./config/config.js');
 
 const prefix = config.prefix;
 const token = config.token;

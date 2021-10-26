@@ -6,6 +6,7 @@ const { readdirSync } = require('fs');
 const ascii = require('ascii-table');
 const table = new ascii('Commands');
 table.setHeading('Command', 'Load status');
+const { cyan } = require('chalk');
 
 /**
  * @param {Client} client
@@ -35,6 +36,7 @@ module.exports = async (client) => {
     console.log(table.toString().cyan);
   } catch (e) {
     console.log(String(e.stack).bgRed);
+
   }
 
 
@@ -54,8 +56,7 @@ client.on('ready', async () => {
     client.guilds.cache.forEach(async (g) => {
       await client.guilds.cache.get(g.id).commands.set(arrayOfSlashCommands);
     });
-
-
+   console.log('[SLASH COMMANDS]: READY'.cyan);
 });
 
 };

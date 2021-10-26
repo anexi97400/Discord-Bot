@@ -1,6 +1,6 @@
 const { Client, ContextMenuInteraction, MessageEmbed } = require('discord.js');
 const { readdirSync } = require('fs');
-const prefix = require('../../config/config.json').prefix;
+const prefix = require('../../config/config.js').prefix;
 
 module.exports = {
     name: 'help',

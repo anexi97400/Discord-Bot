@@ -1,6 +1,6 @@
 /* eslint-disable no-empty-function */
 /* eslint-disable no-shadow */
-const client = require('..');
+const client = require('../..');
 const { MessageEmbed } = require('discord.js');
 
 client.on('interactionCreate', async (interaction) => {
@@ -37,7 +37,7 @@ client.on('interactionCreate', async (interaction) => {
               );
          return interaction.followUp({ embeds : [perms] }); }
 
-     const { owners } = require('../config/config.json');
+     const { owners } = require('../../config/config.js');
      if (cmd) {
       if (cmd.ownerOnly) {
      if (!owners.includes(interaction.user.id)) {

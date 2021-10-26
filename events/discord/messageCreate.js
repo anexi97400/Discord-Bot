@@ -1,12 +1,12 @@
 const { MessageEmbed, Collection } = require('discord.js');
-const config = require('../config/config.json');
-const ee = require('../config/config.json');
-const client = require('..');
+const config = require('../../config/config.js');
+const ee = require('../../config/config.js');
+const client = require('../..');
 const prefix = config.prefix;
 
 
 client.on('messageCreate', async (message) => {
-  const { escapeRegex, onCoolDown } = require('../utils/function');
+  const { escapeRegex, onCoolDown } = require('../../utils/function');
   if (!message.guild) return;
   if (message.author.bot) return;
   if (message.channel.partial) await message.channel.fetch();
@@ -60,7 +60,7 @@ client.on('messageCreate', async (message) => {
     {return message.channel.send({ embeds: [botperm] });}
 
     // / owner only command handler
-    const { owner } = require('../config/config.json');
+    const { owner } = require('../../config/config.js');
 if (command) {
  if (command.ownerOnly) {
 if (!owner.includes(message.author.id)) {

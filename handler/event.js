@@ -10,25 +10,28 @@ table.setHeading('Event', 'Load Status');
  * @param {Client} client
  */
 // loading events in log
-
-module.exports = (client) => {
-    const events = readdirSync('./events/').filter(file =>
-        file.endsWith('.js')
-    );
-    for (const file of events) {
-        try {
-            const pull = require(`../events/${file}`);
-            if (pull.event && typeof pull.event !== 'string') {
-                table.addRow(file, '❌-> Property event should be a string!');
-                continue;
+module.exports = async (client) => {
+    try {
+        readdirSync('./events/').forEach((dir) => {
+          const events = readdirSync(`./events/${dir}/`).filter((file) =>
+            file.endsWith('.js')
+          );
+          for (const file of events) {
+            const pull = require(`../events/${dir}/${file}`);
+            if (pull.name) {
+              client.commands.set(pull.name, pull);
+              table.addRow(file, '❌-> Property event should be a string!');
+            } else {
+              table.addRow(
+                file,
+                'Loaded!'
+              );
+              continue;
             }
-            pull.event = pull.event || file.replace('.js', '');
-            table.addRow(file, 'Loaded!');
-        } catch (err) {
-            console.log('');
-            console.log(err);
-            table.addRow(file, '❌-> This has an error!');
-        }
-    }
-    console.log(table.toString().cyan);
-};
+            if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach((alias) => client.aliases.set(alias, pull.name));
+          }
+        });
+        console.log(table.toString().cyan);
+      } catch (e) {
+        console.log(String(e.stack).bgRed);
+      }};

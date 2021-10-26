@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { confirmation } = require('@reconlx/discord.js');
-const { default_prefix } = require('../../config/config.json');
+const { default_prefix } = require('../../config/config.js');
 const db = require('quick.db');
 const confirmationEmbed = new Discord.MessageEmbed()
 .setTitle('Prefix Reset')
